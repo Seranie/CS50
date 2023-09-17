@@ -1,0 +1,124 @@
+noGenes = dict()
+    for person in people:
+        # make list of people not in one or two genes
+        if person not in one_gene or person not in two_genes:
+            noGenes[person] = None
+
+    #probability for all people without trait and have no genes 
+    for person in noGenes:
+        if people[person]['father'] == None:
+            probability = PROBS["gene"][0] * PROBS["trait"][0][False]
+            noGenes[person] = probability
+        else:
+            
+
+
+
+    # probability for people in have trait
+    """haveTrait = dict()
+    for person in have_trait:
+        # 2 genes
+        if person in two_genes:
+            probability = PROBS['trait'][2][True]
+            haveTrait[person] = probability
+        # 1 gene
+        elif person in one_gene:
+            probability = PROBS["trait"][1][True]
+            haveTrait[person] = probability
+        # no genes
+        else:
+            probability = PROBS["trait"][0][True]
+            haveTrait[person] = probability"""
+
+    # One_genes
+    noTrait = dict()
+    oneGene = dict()
+    for person in one_gene:
+        if people[person]['mother'] == None and people[person]['father'] == None:
+            probability = PROBS["gene"][1]
+            oneGene[person] = probability
+
+        else:
+            mother = people[person]['mother']
+            father = people[person]['father']
+            parents = dict()
+            # Number of genes for father and mother
+            parents[mother] = None
+            parents[father] = None
+            for person in parents:
+                if person in two_genes:
+                    parents[person] = 2
+                elif person in one_gene:
+                    parents[person] = 1
+                else:
+                    parents[person] = 0
+
+            # mother passes on gene, father doesnt
+            def passGene(person):
+                probability = None
+                match person:
+                    case 0:
+                        probability = PROBS["mutation"]
+                    case 1:
+                        probability = 0.5 - PROBS["mutation"]
+                    case 2:
+                        probability = 1 - PROBS["mutation"]
+                return probability
+
+            def doesntPassGene(person):
+                probability = None
+                match person:
+                    case 0:
+                        probability = 1 - PROBS["mutation"]
+                    case 1:
+                        probability = 0.5 - PROBS["mutation"]
+                    case 2:
+                        probability = PROBS["mutation"]
+
+            motherProbability = passGene(parents[mother])
+            fatherProbability = doesntPassGene(parents[father])
+            probability = fatherProbability * motherProbability
+            motherProbability = doesntPassGene(parents[mother])
+            fatherProbability = passGene(parents[father])
+            probability += motherProbability * fatherProbability
+            if person not in have_trait:
+                oneGene[person] = probability * PROBS["trait"][1][False]
+            elif person in have_trait:
+                oneGene[person] = probability * PROBS["trait"][1][True]
+
+    twoGenes = dict()
+    for person in two_genes:
+        if people[person]['mother'] == None and people[person]['father'] == None:
+            probability = PROBS["gene"][1]
+            oneGene[person] = probability
+
+        else:
+            mother = people[person]['mother']
+            father = people[person]['father']
+            parents = dict()
+            # Number of genes for father and mother
+            parents[mother] = None
+            parents[father] = None
+            for person in parents:
+                if person in two_genes:
+                    parents[person] = 2
+                elif person in one_gene:
+                    parents[person] = 1
+                else:
+                    parents[person] = 0
+            def passGene(person):
+                probability = None
+                match person:
+                    case 0:
+                        probability = PROBS["mutation"]
+                    case 1:
+                        probability = 0.5 - PROBS["mutation"]
+                    case 2:
+                        probability = 1 - PROBS["mutation"]
+                return probability
+            motherProbability = passGene(parents[mother])
+            fatherProbability = passGene(parents[father])
+            probability = motherProbability * fatherProbability
+            twoGenes[person] = probability
+            if person not in have_trait:
+                noTrait[person] = PROBS["trait"][2][True]

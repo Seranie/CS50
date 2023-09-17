@@ -1,0 +1,13 @@
+make sentence,
+append to knowledge
+check for subset inference
+if not
+check sentence with known mines/safes
+else if subset:
+make new inference
+append inference
+do :
+look through all sentence in knowledge
+call knownmines/safses
+if no change:
+break
