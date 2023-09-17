@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+
+{% block main %}
+<h1> {{ username }} </h1>
+<p> Current cash amount:{{ cash | usd }}  </p>
+{% if userStocks|length() %}
+    <p> Total asset amount (Stock value + cash): {{ totalStockValue| usd }} </p>
+{% endif %}
+<form action="/addcash" method="get" autocomplete="off">
+    <input name="cash" placeholder="Add cash">
+    <input type="submit">
+</form>
+<hr>
+<table class="table table-striped ms-auto me-auto w-75">
+    <thead>
+        <tr>
+            <td>Symbol</td>
+            <td>Shares</td>
+            <td>Current Stock Price</td>
+            <td>Total Share Price</td>
+        </tr>
+    </thead>
+
+{% if userStocks|length() %}
+    <tbody>
+        {% for row in userStocks %}
+            <tr>
+                <td>{{ row["symbol"] }} </td>
+                <td>{{ '%.5f'| format(row["shares"]) }} </td>
+                <td>{{ currentStockPrice[row["symbol"]] | usd }} </td>
+                <td>{{ stockValues[row["symbol"]] | usd }} </td>
+                <td>
+                    <form action="/indexTransaction" method="post" autocomplete="off">
+                        <input name="shares" placeholder="Amount to buy/sell" type="text">
+                        <input name="symbol" value="{{ row['symbol'] }}" hidden>
+                        <input name="btn" type="submit" value="Buy">
+                        <input name="btn" type="submit" value="Sell">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+
+{% endif %}
+</table>
+{% endblock %}

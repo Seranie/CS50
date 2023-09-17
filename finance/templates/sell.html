@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<h1>Sell stocks owned</h1>
+<form action="/sell" method="post" autocomplete="off">
+    <select name="symbol" required class="m-3">
+        <option disabled selected> -- </option>
+        {% for row in allStocks %}
+            <option value="{{ row['symbol'] }}"> {{ row['symbol'] }} </option>
+        {% endfor %}
+    </select>
+    <br>
+    <input name="shares" required class="m-3" placeholder="Amount to sell">
+    <br>
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

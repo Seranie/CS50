@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <table class="table table-striped w-75 ms-auto me-auto">
+        <thead class="col text-secondary">
+            <tr class="p-4 border-bottom">
+                <td>Type</td>
+                <td>Symbol</td>
+                <td>Purchase Price</td>
+                <td>Number of Shares</td>
+                <td>Date</td>
+            </tr>
+        </thead>
+        <tbody class="col">
+            {% for row in userHistory %}
+                <tr>
+                    <td class="border">{% if row['shares'] >= 0 %}
+                            Buy
+                        {% else %}
+                            Sell
+                        {% endif %}
+                    </td>
+                    <td> {{ row['symbol'] }} </td>
+                    <td> {{ row['totalPrice'] | usd }} </td>
+                    <td> {{ row['shares'] }} </td>
+                    <td> {{ row['transactionTime'] }} </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+{% endblock %}

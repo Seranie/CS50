@@ -1,0 +1,205 @@
+body{
+    font-family: 'Share Tech Mono', monospace;
+}
+
+
+p{
+    margin: 0;
+}
+
+/* NAV */
+    .navbar-brand{
+        padding: 0;
+    }
+
+
+
+    .nav-link{
+        color: #fffdd3;
+        font-size: 1.5em;
+        letter-spacing: 0.3em;
+    }
+
+    .navbar{
+        padding: 0;
+    }
+
+    .nav-link:hover{
+        color: #e8e692;
+        background-color: #b1a44b;
+        transition: 0.4s ease;
+    }
+
+    .nav-pills .show>.nav-link {
+        background-color: #261B1D;
+    }
+
+    .nav-pills .nav-link.active{
+        background-color: #3D3E40;
+        padding: 0;
+    }
+
+
+
+
+    .border-custom{
+        border: solid #f2d480;
+        border-width: 2px;
+        height: 3em;
+        margin: 0 0.5em;
+        display: inline;
+    }
+
+.mini-header{
+    color: #f2d480;
+    background-color: #261B1D;
+    border: solid #f2d480;
+    border-width: 0.1em 0;
+    margin-top: calc();
+}
+
+/* INDEX */
+#backgroundImg{
+    background-image: url("wallpaperflare.com_wallpaper.jpg");
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    user-select: none;
+}
+
+header{
+    height: 3em;
+}
+
+#strandLogo{
+    position: absolute;
+    margin: auto;
+    width: 70%;
+    top: 2em;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+footer{
+    text-align: center;
+    background-color: #000000;
+    margin: 0;
+    padding: 1em;
+    font-size: 1em;
+    letter-spacing: 1em;
+    border-style: solid;
+    border-width: 1px 0;
+    border-color: #f2d480;
+}
+
+#navDiv{
+    max-height: 2em;
+    display: flex;
+}
+
+/* ABOUT */
+
+#aboutBackground{
+    background-image: url("AboutBackground.png");
+    background-size: cover;
+    background-position: top center;
+    height: 100vh;
+    max-width: 100%;
+}
+
+#aboutText{
+    max-width: 50%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 40vh;
+    line-height: 2;
+}
+
+#aboutText > span{
+    max-width: 70%;
+    margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.2em;
+}
+
+
+#media-background{
+    background-color: #60584c;
+    background-blend-mode: multiply;
+    background-image: url("00000.png");
+    background-size:cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+}
+
+.carousel-item{
+    justify:center;
+}
+
+.carousel-img{
+   margin:auto;
+   margin-top: 30vh;
+}
+
+.carousel{
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index:0;
+}
+
+.carousel-control-prev, .carousel-control-next{
+    height: 2em;
+    margin-top:50vh;
+}
+
+.carousel-control-prev{
+    left: 8em;
+}
+.carousel-control-next{
+    right: 8em;
+}
+.carousel-indicators{
+    margin-bottom: 3em;
+}
+
+
+/* sign up page */
+
+#signupPage{
+    background-image: url("00001.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: #c3c3c3;
+    background-blend-mode: multiply;
+    height:100vh;
+}
+
+#funBtn{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color:#fffdd3;
+}
+
+#kitty{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    display: none;
+}

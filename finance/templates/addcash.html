@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+    <h1>Re-type password</h1>
+    <form action="/addcash" method="post" autocomplete="off">
+        <input name="cash" hidden value="{{ amountToAdd }}">
+        <br>
+        <input name="password" placeholder="Password" type="password" class="m-3">
+        <br>
+        <input type="submit">
+    </form>
+{% endblock %}
